@@ -1,12 +1,11 @@
 # Clean up ----
-if(!is.null(dev.list())) dev.off()   # Clear plots
-rm(list=ls())                        # Clean workspace
-cat("\014")                          # Clear console
+if(!is.null(dev.list())) dev.off()                  # Clear plots
+rm(list=ls())                                       # Clean workspace
+cat("\014")                                         # Clear console
+if (!require("pacman")) install.packages("pacman")  # Installs/loads pacman
 
 # Libraries ----
-library(tidyverse)
-library(rvest)
-library(stringr)
+pacman::p_load(tidyverse, rvest, stringr)
 
 # Skill list of the team ----
 team_list <- list()
