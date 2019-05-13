@@ -18,8 +18,8 @@ pacman::p_load(rvest)
 
 # Initialization ----
 
-id_min <- 9823626
-id_max <- 9828541
+id_min <- 10106262
+id_max <- 10150000
 
 # # min <- 10638444 
 # min <- 10668444 
@@ -87,7 +87,7 @@ empl_type = "Scout"
     
   } else if(empl_type == "Scout"){
     
-    scouts <- c()}
+    scouts <- c()} # 9929501
   
   for(i in id_min:id_max){
     url <- paste('https://www.virtualmanager.com/employees/', i, sep = "")
@@ -96,7 +96,7 @@ empl_type = "Scout"
     rank_data_html <- html_nodes(webpage, '.potential_assessment strong , .speciality strong , .job strong , .motivation strong , .discipline strong')
     rank_data <- html_text(rank_data_html)
     n <- length(rank_data) 
-    if(rank_data[1] == "Unemployed" & rank_data[2] == "Scout" & rank_data[3] == 20 & as.numeric(rank_data[5]) == 20 & rank_data[n] == 20) {scouts <- c(scouts, paste("SCOUT: Check him:", i, sep = " "))}
+    if(rank_data[1] == "Unemployed" & rank_data[2] == "Scout" & rank_data[3] == 20 & as.numeric(rank_data[5]) >= 19 & rank_data[n] == 20) {scouts <- c(scouts, paste("SCOUT: Check him:", i, sep = " "))}
     counter <- counter + 1
     print(counter)
   }
